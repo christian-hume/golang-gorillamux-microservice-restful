@@ -11,11 +11,12 @@ import (
 func main() {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprint(w, `{"message": "Hola desde Gorilla Mux"}`)
-	}).Methods("GET")
+	router.HandleFunc("/users", GetAllUsers).Methods("GET")
+	router.HandleFunc("/users", CreateUser).Methods("POST")
+	router.HandleFunc("/users/{id}", GetUserByID).Methods("GET")
+	router.HandleFunc("/users/{id}", UpdateUser).Methods("PUT")
+	router.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
 
-	fmt.Println("Servidor corriendo en http://localhost:8080 🚀")
+	fmt.Println("🚀 Server running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
