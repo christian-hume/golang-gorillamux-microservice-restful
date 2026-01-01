@@ -36,7 +36,7 @@ func GetAllUsers(response http.ResponseWriter, request *http.Request) {
 	})
 }
 
-// CreateUser - POST /users
+// CreateUser - POST /golang/api/v1/users
 func CreateUser(response http.ResponseWriter, request *http.Request) {
 	response.Header().Set("Content-Type", "application/json")
 
